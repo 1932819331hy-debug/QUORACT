@@ -1,0 +1,36 @@
+{
+  "profile": "neevan-protocol-clean-room-proxy-v0.9-candidate",
+  "wire_fields": ["object", "intent", "authority", "lifetime", "result"],
+  "capabilities": [
+    {
+      "name": "schemaorg-calendar",
+      "binding_mode": "external-vocabulary",
+      "object_type": "https://schema.org/Event",
+      "intent": "https://schema.org/ScheduleAction",
+      "result_type": "https://schema.org/Event",
+      "required_data": ["https://schema.org/name", "https://schema.org/startDate", "https://schema.org/endDate"],
+      "date_time_data": ["https://schema.org/startDate", "https://schema.org/endDate"],
+      "additional_data": false
+    },
+    {
+      "name": "activitystreams-note",
+      "binding_mode": "external-vocabulary",
+      "object_type": "https://www.w3.org/ns/activitystreams#Note",
+      "intent": "https://www.w3.org/ns/activitystreams#Create",
+      "result_type": "https://www.w3.org/ns/activitystreams#Note",
+      "required_data": ["https://www.w3.org/ns/activitystreams#content"],
+      "date_time_data": [],
+      "additional_data": false
+    },
+    {
+      "name": "v07-calendar",
+      "binding_mode": "direct-schema-id",
+      "object_type": "https://example.org/semantic/calendar/event/1",
+      "intent": "https://example.org/semantic/calendar/create/1",
+      "result_type": "https://example.org/semantic/calendar/created/1",
+      "required_data": ["title", "start", "end"],
+      "date_time_data": ["start", "end"],
+      "additional_data": false
+    }
+  ]
+}
