@@ -33,7 +33,7 @@ Run the public tests:
 python3 conformance.py --handler /absolute/path/to/handler
 ```
 
-The kit includes 3 valid and 7 invalid test cases. There is no reference handler here.
+The kit includes 4 valid and 8 invalid test cases. There is no reference handler here.
 
 ## Scope
 
