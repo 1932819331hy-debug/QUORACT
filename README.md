@@ -39,10 +39,6 @@ The kit includes 4 valid and 8 invalid test cases. There is no reference handler
 
 This is the experimental **v0.9 public profile**. The `authority` and `lifetime` fields are opaque and **not enforced** by this kit. Passing these tests does not establish real authorization, expiry enforcement, replay protection, production security, or compatibility with other implementations.
 
-## Independent research
-
-- [MCP lost-response retry experiment](research/independent-mcp-lost-response/README.md) — a separate reproducible failure-mode study, **not** part of QUORACT or its conformance/security claims.
-
 ## License
 
 [Apache-2.0](LICENSE). Free to use, modify, and distribute, including commercially, under its terms. The license does not grant trademark rights.
