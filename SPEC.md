@@ -103,3 +103,40 @@ This kit uses canonical vocabulary identifiers already established outside QUORA
 ## 6. Scope limits
 
 This kit intentionally does not standardize network transport, discovery protocol, production authorization/signature format, namespace ownership continuity, schema distribution, universal semantic equivalence, or a public standards process. Those remain separate research questions.
+
+## 7. Conformance CLI contract (test-only)
+
+The public `conformance.py` runner invokes the handler as an executable:
+
+```sh
+/path/to/handler --envelope /absolute/path/to/vector.json
+```
+
+The argument is a path to a JSON request file. For a valid request, the handler MUST exit with code `0` and write a JSON object to standard output containing:
+
+- `status`: `"ok"`
+- `binding_mode`: the matched capability's `binding_mode`
+- `object_type`: the request's `object.type`
+- `intent`: the request's `intent.action`
+- `result_type`: the matched `result.expects` URI
+- `result`: a JSON object satisfying the matched fixture's result requirements in section 3.
+
+For an invalid request, the handler MUST exit with a nonzero code; the runner does not require a particular error body.
+
+Example response to the ActivityStreams Note request in the README:
+
+```json
+{
+  "status": "ok",
+  "binding_mode": "external-vocabulary",
+  "object_type": "https://www.w3.org/ns/activitystreams#Note",
+  "intent": "https://www.w3.org/ns/activitystreams#Create",
+  "result_type": "https://www.w3.org/ns/activitystreams#Note",
+  "result": {
+    "@type": "https://www.w3.org/ns/activitystreams#Note",
+    "https://www.w3.org/ns/activitystreams#content": "Hello"
+  }
+}
+```
+
+These fields describe the **test handler's output**, not additional QUORACT request fields or a standardized production response format. The five-field request remains unchanged.
